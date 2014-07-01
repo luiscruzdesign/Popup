@@ -1,0 +1,59 @@
+<!--  POP UP -->
+
+<style>
+	#lightbox-overlay {background:rgba(0,0,0,0.8);position:absolute;top:0;z-index:99;}
+	#popup {display:none;}
+	#popup {position:absolute;top:70px;left:0;display:table;width:100%;}
+	#popup-ccc {margin:0 auto;display:block;}
+	#popupcontent {display:table;margin:0 auto;}
+
+	
+	/* 
+
+	Para gerar gradiente
+	http://www.cssmatic.com/
+
+	*/
+	#lightbox-overlay {
+		background: rgba(0,0,0,0.91);
+		background: -moz-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.91)), color-stop(100%, rgba(255,255,255,0)));
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
+		background: -o-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
+		background: -ms-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
+		background: linear-gradient(to right, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=1 );
+	}
+</style>
+
+<div id="popup">
+	
+
+	<!-- INSIRA AQUI O CONTEÚDO DO POPUP -->
+	<div id="popupcontent">
+		
+	</div>
+	<!-- FIM DO CONTEÚDO DO POPUP -->
+
+</div>
+
+<script>
+	(function ($) {
+		$(document).ready(function() {
+			var documentheight = $(document).height();
+			var popupheight = document.getElementById("popup").offsetHeight;
+		  	var lightboxoverlayheight = documentheight;
+		  	var lightboxoverlaywidth = $(document).width();
+		  	var lightboxoverlaytext = '<div id="lightbox-overlay" style="height: ' + lightboxoverlayheight + 'px; width: ' + lightboxoverlaywidth + 'px;"> </div>';
+		  	$("body").append(lightboxoverlaytext);
+		  	$("#popup").appendTo("#lightbox-overlay");
+		  	var popupwidth = document.getElementById("popup").offsetWidth;
+    		var margin = popupwidth/2;
+		  	$("#lightbox-overlay").click(function(){
+		  		$("#lightbox-overlay").fadeOut("slow","linear")
+		  	});
+		});
+	})(jQuery);
+</script>
+
+<!-- /POP UP -->

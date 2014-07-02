@@ -1,59 +1,75 @@
-<!--  POP UP -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Popup</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="css/_meyer-reset.css">
+</head>
+<body>
 
-<style>
-	#lightbox-overlay {background:rgba(0,0,0,0.8);position:absolute;top:0;z-index:99;}
-	#popup {display:none;}
-	#popup {position:absolute;top:70px;left:0;display:table;width:100%;}
-	#popup-ccc {margin:0 auto;display:block;}
-	#popupcontent {display:table;margin:0 auto;}
+	<!--  POP UP -->
 
-	
-	/* 
+	<style>
+		#lightbox-overlay {background:rgba(0,0,0,0.8);position:absolute;top:0;z-index:99;}
+		#popup {display:none;}
+		#popup {position:absolute;top:70px;left:0;display:table;width:100%;}
+		#popup-ccc {margin:0 auto;display:block;}
+		#popupcontent {display:table;margin:0 auto;position:relative;}
+		#close-popup {position:absolute;top:-25px;right:-25px;background:#929292;color:white;width:20px;height:19px;padding-top:1px;text-align:center;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;font-weight:bold;cursor:pointer;font-family:arial,helvetica, 'sans-serif';}
 
-	Para gerar gradiente
-	http://www.cssmatic.com/
-
-	*/
-	#lightbox-overlay {
-		background: rgba(0,0,0,0.91);
-		background: -moz-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
-		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.91)), color-stop(100%, rgba(255,255,255,0)));
-		background: -webkit-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
-		background: -o-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
-		background: -ms-linear-gradient(left, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
-		background: linear-gradient(to right, rgba(0,0,0,0.91) 0%, rgba(255,255,255,0) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=1 );
-	}
-</style>
-
-<div id="popup">
-	
-
-	<!-- INSIRA AQUI O CONTEÚDO DO POPUP -->
-	<div id="popupcontent">
 		
+		/* 
+
+		Para gerar gradiente
+		http://www.cssmatic.com/
+
+		*/
+		#lightbox-overlay {
+			background: rgba(212,212,212,0.5);
+			background: -moz-linear-gradient(top, rgba(212,212,212,0.5) 0%, rgba(255,255,255,0) 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(212,212,212,0.5)), color-stop(100%, rgba(255,255,255,0)));
+			background: -webkit-linear-gradient(top, rgba(212,212,212,0.5) 0%, rgba(255,255,255,0) 100%);
+			background: -o-linear-gradient(top, rgba(212,212,212,0.5) 0%, rgba(255,255,255,0) 100%);
+			background: -ms-linear-gradient(top, rgba(212,212,212,0.5) 0%, rgba(255,255,255,0) 100%);
+			background: linear-gradient(to bottom, rgba(212,212,212,0.5) 0%, rgba(255,255,255,0) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4d4d4', endColorstr='#ffffff', GradientType=0 );
+		}
+	</style>
+
+	<div id="popup">
+		
+
+		<!-- INSIRA AQUI O CONTEÚDO DO POPUP -->
+		<div id="popupcontent">
+			<img src="http://lorempixel.com/output/city-q-c-640-640-9.jpg" alt="Conteúdo Popup">
+			<span id="close-popup">x</span>
+		</div>
+		<!-- FIM DO CONTEÚDO DO POPUP -->
+
 	</div>
-	<!-- FIM DO CONTEÚDO DO POPUP -->
 
-</div>
+	<script>
+		(function ($) {
+			$(document).ready(function() {
+				var documentheight = $(document).height();
+				var popupheight = document.getElementById("popup").offsetHeight;
+			  	var lightboxoverlayheight = documentheight;
+			  	var lightboxoverlaywidth = $(document).width();
+			  	var lightboxoverlaytext = '<div id="lightbox-overlay" style="height: ' + lightboxoverlayheight + 'px; width: ' + lightboxoverlaywidth + 'px;"> </div>';
+			  	$("body").append(lightboxoverlaytext);
+			  	$("#popup").appendTo("#lightbox-overlay");
+			  	var popupwidth = document.getElementById("popup").offsetWidth;
+	    		var margin = popupwidth/2;
+			  	$("#close-popup").click(function(){
+			  		$("#lightbox-overlay").fadeOut(1000,"easeInOutSine");
+			  	});
+			});
+		})(jQuery);
+	</script>
 
-<script>
-	(function ($) {
-		$(document).ready(function() {
-			var documentheight = $(document).height();
-			var popupheight = document.getElementById("popup").offsetHeight;
-		  	var lightboxoverlayheight = documentheight;
-		  	var lightboxoverlaywidth = $(document).width();
-		  	var lightboxoverlaytext = '<div id="lightbox-overlay" style="height: ' + lightboxoverlayheight + 'px; width: ' + lightboxoverlaywidth + 'px;"> </div>';
-		  	$("body").append(lightboxoverlaytext);
-		  	$("#popup").appendTo("#lightbox-overlay");
-		  	var popupwidth = document.getElementById("popup").offsetWidth;
-    		var margin = popupwidth/2;
-		  	$("#lightbox-overlay").click(function(){
-		  		$("#lightbox-overlay").fadeOut("slow","linear")
-		  	});
-		});
-	})(jQuery);
-</script>
-
-<!-- /POP UP -->
+	<!-- /POP UP -->
+	
+</body>
+</html>
